@@ -41,13 +41,6 @@ import cgi, cgitb
 
 cgitb.enable()
 
-#get configure properties
-configArr = {}
-for line in open('credentials.properties', 'r'):
-	lineArr = line.split('=')
-	lineArr[1] = lineArr[1].replace('\n', '')
-	configArr[lineArr[0]] = lineArr[1]
-
 #setup DB
 dbconnect = sqlite3.connect(pathToDb.pathToDb)
 dbconnect.row_factory = sqlite3.Row
@@ -66,21 +59,34 @@ def nutrientsApp():
 	print('		});')
 
 	#LOGIN CONTROLLER
-	print('		nutrientsApp.controller(\'LoginCtrl\', function($scope, $rootScope){')
+	print('		nutrientsApp.controller(\'LoginCtrl\', function($scope, $rootScope, $http){')
 	print('			$scope.userName = null;')
 	print('			$scope.passWord = null;')
 
 	print('			$scope.verifyCredentials = function(){')
-	print('				if($scope.userName == "' + configArr['user'] + '" && $scope.passWord == "' + configArr['pass'] + '"){')
-	print('					isValidated = true;')
+	print('				if(!isValidated){')	
 	print('					signedInUser = $scope.userName;')
-	print('					$rootScope.greetStr = \'' + configArr['user'] + ' \';')
-	print('					$rootScope.actionStr = \'Logout\'')
+	print('					$http.post("verifyUser.py", $.param({"username": $scope.userName, "password": $scope.passWord}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
+	print('						signedInUser = signedInUser.trim();')
+	print('						response = response.trim();')
+	print('						if(response == signedInUser){')
+	print('							isValidated = true;')
+	print('							$rootScope.greetStr = \'(\' + response + \') \';')
+	print('							$rootScope.actionStr = \'Logout\';')
+	print('						}')
+	print('						else{')
+	print('							alert("Incorrect Username or Password");')
+	print('						}')
+	print('					});')
+	print('					$scope.userName = "";')
+	print('					$scope.passWord = "";')
 	print('				}')
 	print('				else{')
+	print('					signedInUser = "";')
+	print('					$rootScope.greetStr = \'(Not Identified) \';')
+	print('					$rootScope.actionStr = \'Login\';')
+	print('					isValidated = false;')
 	print('				}')
-	print('				$scope.userName = "";')
-	print('				$scope.passWord = "";')
 	print('			};')
 	print('		});')
 
