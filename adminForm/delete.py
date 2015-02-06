@@ -66,3 +66,10 @@ elif formType == 'plat':
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
+elif formType == 'sens':
+	rowid = data.getvalue('rowid')
+	sql = 'DELETE FROM sensor WHERE rowid = ' + str(rowid)
+	print(sql)
+	dbh.execute(sql)
+	dbconnect.commit()
+	dbconnect.close()

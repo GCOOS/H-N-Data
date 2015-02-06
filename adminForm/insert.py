@@ -78,3 +78,22 @@ elif formType == 'plat':
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
+elif formType == 'sens':
+	sensorType = data.getvalue('sensorType')
+	verticalPosition = data.getvalue('verticalPosition')
+	sensorNumber = data.getvalue('sensorNumber')
+	platformId = data.getvalue('platformId')
+	provider = data.getvalue('provider')
+	stationLabel = data.getvalue('stationLabel')
+	sensorTypeName = data.getvalue('sensorTypeName')
+	localId = provider + '.' + stationLabel + '.' + sensorTypeName + '.' + sensorNumber
+	sqlSelect = 'SELECT rowid,* FROM sensor'
+	dbh.execute(sqlSelect)
+	rows = dbh.fetchall()
+	for row in rows:
+		maxId = row['rowid']
+	sql = 'INSERT INTO sensor VALUES (' + str(maxId + 1) + ',' + str(platformId) + ',' + str(sensorType) + ',"' + str(localId) + '",' + str(sensorNumber) + ',' + str(verticalPosition) + ', "2008-01-01T00:00:00Z", "2008-01-01T00:00:00Z", 2)'
+	print(sql)
+	dbh.execute(sql)
+	dbconnect.commit()
+	dbconnect.close()

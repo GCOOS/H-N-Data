@@ -80,3 +80,10 @@ elif formType == 'plat':
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
+elif formType == 'sens':
+	sensorType = data.getvalue('sensorType')
+	verticalPosition = data.getvalue('verticalPosition')
+	sensorNumber = data.getvalue('sensorNumber')
+	rowid = data.getvalue('rowid')
+	sql = 'UPDATE sensor SET sensorTypeId = ' + str(sensorType) + ', verticalPosition = ' + str(verticalPosition) + ', sensorNumber = ' + str(sensorNumber) + ' WHERE rowid = ' + str(rowid)
+	print(sql)
