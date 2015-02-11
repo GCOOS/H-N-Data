@@ -64,6 +64,7 @@ def nutrientsApp():
 	print('			$scope.userName = null;') #username
 	print('			$scope.passWord = null;') #password
 	print('			$scope.showAlertMessage = false;') #login alert message flag
+	print('			$scope.showInformationMessage = true;') #login information message flag
 
 	#function to verify credentials
 	print('			$scope.verifyCredentials = function(){')
@@ -131,32 +132,32 @@ def nutrientsApp():
 	print('			$scope.o_contactEmailInput = "";') #contact email input
 	print('			$scope.o_urlInput = "";') #url input
 	print('			$scope.o_browseActive = "active";') #active button flags
-	print('			$scope.o_addActive = "";')
+	print('			$scope.o_addActive = "";') 
 	print('			$scope.o_editActive = "";')
 	print('			$scope.o_deleteActive = "";')
 
 	#plat variables
-	print('			$scope.p_nameInput = "";')
-	print('			$scope.p_nameTextInput = "";')
-	print('			$scope.p_descriptionInput = "";')
-	print('			$scope.p_latitudeInput = "";')
-	print('			$scope.p_longitudeInput = "";')
+	print('			$scope.p_nameInput = "";') #platform name dropdown
+	print('			$scope.p_nameTextInput = "";') #platform name input
+	print('			$scope.p_descriptionInput = "";') #platform description input
+	print('			$scope.p_latitudeInput = "";') #latitude input
+	print('			$scope.p_longitudeInput = "";') #longitude input
 	print('			$scope.p_organizationInput = "";')
-	print('			$scope.p_urlInput = "";')
-	print('			$scope.p_rssInput = "";')
-	print('			$scope.p_imageInput = "";')
-	print('			$scope.p_urnInput = "";')
-	print('			$scope.p_statusInput = "";')
-	print('			$scope.p_browseActive = "active";')
+	print('			$scope.p_urlInput = "";') #url input
+	print('			$scope.p_rssInput = "";') #rss input
+	print('			$scope.p_imageInput = "";') #image input
+	print('			$scope.p_urnInput = "";') #urn input
+	print('			$scope.p_statusInput = "";') #status input
+	print('			$scope.p_browseActive = "active";') #active button flags
 	print('			$scope.p_addActive = "";')
 	print('			$scope.p_editActive = "";')
 	print('			$scope.p_deleteActive = "";')
 
 	#sens variables
-	print('			$scope.s_sensorTypeInput = "";')
-	print('			$scope.s_verticalPositionInput = "0";')
-	print('			$scope.s_numberInput = "";')
-	print('			$scope.s_browseActive = "active";')
+	print('			$scope.s_sensorTypeInput = "";') #sensor type dropdown
+	print('			$scope.s_verticalPositionInput = "0";') #vertical position input
+	print('			$scope.s_numberInput = "";') #number input
+	print('			$scope.s_browseActive = "active";') #active button flags
 	print('			$scope.s_addActive = "";')
 	print('			$scope.s_editActive = "";')
 	print('			$scope.s_deleteActive = "";')
@@ -181,16 +182,46 @@ def nutrientsApp():
 	print('			$scope.s_verticalPositionInputActive = "disabled";')
 	print('			$scope.s_numberInputActive = "disabled";')
 
+	print('			$scope.o_submitBtn = "disabled";')
+	print('			$scope.p_submitBtn = "disabled";')
+	print('			$scope.s_submitBtn = "disabled";')
+
 	#get orgs
 	sqlSelect = 'SELECT rowid, * FROM organization ORDER BY shortname ASC'
 	dbh.execute(sqlSelect)
 	rows = dbh.fetchall()
 	print('	$scope.orgList = [')
 	first = True
+	rowid = 0
+	shortname = ''
+	name = ''
+	contactName = ''
+	contactEmail = ''
+	url = ''
+	#loop through all rows
 	for row in rows:
+		#if not the first row, then add comma
 		if not first:
 			print(',')
-		print('{rowid: "' + str(row['rowid']) + '", shortname: "' + str(row['shortname']) + '", name: "' + str(row['name']) + '", contactName: "' + str(row['contactName']) + '", contactEmail: "' + str(row['contactEmail']) + '", url: "' + str(row['url']) + '"}')
+		#set 'None' strings to empty
+		rowid = row['rowid']
+		shortname = row['shortname']
+		name = row['name']
+		contactName = row['contactName']
+		contactEmail = row['contactEmail']
+		url = row['url']
+		if str(shortname) == 'None':
+			shortname = ''
+		if str(name) == 'None':
+			name = ''
+		if str(contactName) == 'None':
+			contactName = ''
+		if str(contactEmail) == 'None':
+			contactEmail = ''
+		if str(url) == 'None':
+			url = ''
+		#print current row to frontend
+		print('{rowid: "' + str(rowid) + '", shortname: "' + str(shortname) + '", name: "' + str(name) + '", contactName: "' + str(contactName) + '", contactEmail: "' + str(contactEmail) + '", url: "' + str(url) + '"}')
 		first = False
 	print('];')
 
@@ -200,10 +231,50 @@ def nutrientsApp():
 	rows = dbh.fetchall()
 	print('	$scope.platList = [')
 	first = True
+	rowid = 0
+	name = ''
+	description = ''
+	loc_lat = 0.0
+	loc_lon = 0.0
+	organizationId = 0
+	platformTypeId = 0
+	url = ''
+	rss = ''
+	image = ''
+	urn = ''
+	status = 0
+	#loop through rows
 	for row in rows:
+		#if not the first row, then add comma
 		if not first:
 			print(',')
-		print('{rowid: "' + str(row['rowid']) + '", name: "' + str(row['name']) + '", description: "' + str(row['description']) + '", loc_lat: "' + str(row['loc_lat']) + '", loc_lon: "' + str(row['loc_lon']) + '", organizationId: "' + str(row['organizationId']) + '", platformTypeId: "' + str(row['platformTypeId']) + '", url: "' + str(row['url']) + '", rss: "' + str(row['rss']) + '", image: "' + str(row['image']) + '", urn: "' + str(row['urn']) + '", status: "' + str(row['status']) + '"}')
+		#set 'None' strings to empty
+		rowid = row['rowid']
+		name = row['name']
+		description = row['description']
+		loc_lat = row['loc_lat']
+		loc_lon = row['loc_lon']
+		organizationId = row['organizationId']
+		platformTypeId = row['platformTypeId']
+		url = row['url']
+		rss = row['rss']
+		image = row['image']
+		urn = row['urn']
+		status = row['status']
+		if str(name) == 'None':
+			name = ''
+		if str(description) == 'None':
+			description = ''
+		if str(url) == 'None':
+			url = ''
+		if str(rss) == 'None':
+			rss = ''
+		if str(image) == 'None':
+			image = ''
+		if str(urn) == 'None':
+			urn = ''
+		#print current row to frontend
+		print('{rowid: "' + str(rowid) + '", name: "' + str(name) + '", description: "' + str(description) + '", loc_lat: "' + str(loc_lat) + '", loc_lon: "' + str(loc_lon) + '", organizationId: "' + str(organizationId) + '", platformTypeId: "' + str(platformTypeId) + '", url: "' + str(url) + '", rss: "' + str(rss) + '", image: "' + str(image) + '", urn: "' + str(urn) + '", status: "' + str(row['status']) + '"}')
 		first = False
 	print('];')
 
@@ -235,11 +306,12 @@ def nutrientsApp():
 
 
 	#selected lists
-	print('			$scope.selectedPlatList = [];')
-	print('			$scope.selectedSensList = [];')
+	print('			$scope.selectedPlatList = [];') #current selected platform list
+	print('			$scope.selectedSensList = [];') #current selected sensor list
 
 	#set active button function
 	print('			$scope.setActiveButton = function(btnName){')
+	#if the user is browsing the organizations set browse button to active
 	print('				if(btnName == "BrowseOrganization"){')
 	print('					$scope.o_browseActive = "active";')
 	print('					$scope.o_addActive = "";')
@@ -250,7 +322,9 @@ def nutrientsApp():
 	print('					$scope.o_contactNameInputActive = "disabled";')
 	print('					$scope.o_contactEmailInputActive = "disabled";')
 	print('					$scope.o_urlInputActive = "disabled";')
+	print('					$scope.o_submitBtn = "disabled";')
 	print('				}')
+	#if the user is browsing the platforms set browse button to active
 	print('				else if(btnName == "BrowsePlatform"){')
 	print('					$scope.p_browseActive = "active";')
 	print('					$scope.p_addActive = "";')
@@ -264,7 +338,9 @@ def nutrientsApp():
 	print('					$scope.p_rssInputActive = "disabled";')
 	print('					$scope.p_imageInputActive = "disabled";')
 	print('					$scope.p_urnInputActive = "disabled";')
+	print('					$scope.p_submitBtn = "disabled";')
 	print('				}')
+	#if the user is browsing the sensors set browse button to active
 	print('				else if(btnName == "BrowseSensor"){')
 	print('					$scope.s_browseActive = "active";')
 	print('					$scope.s_addActive = "";')
@@ -273,9 +349,12 @@ def nutrientsApp():
 	print('					$scope.s_sensorTypeInputActive = "disabled";')
 	print('					$scope.s_verticalPositionInputActive = "disabled";')
 	print('					$scope.s_numberInputActive = "disabled";')
+	print('					$scope.s_submitBtn = "disabled";')
 	print('				}')
 	print('				else{')
+	#if the user is authorized
 	print('					if(isValidated){')
+	#if the user is adding an organization set add button to active
 	print('						if(btnName == "AddOrganization"){')
 	print('							$scope.o_browseActive = "";')
 	print('							$scope.o_addActive = "active";')
@@ -286,7 +365,9 @@ def nutrientsApp():
 	print('							$scope.o_contactNameInputActive = "";')
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
+	print('							$scope.o_submitBtn = "";')
 	print('						}')
+	#if the user is editing an organization set add button to active
 	print('						else if(btnName == "EditOrganization"){')
 	print('							$scope.o_browseActive = "";')
 	print('							$scope.o_addActive = "";')
@@ -297,7 +378,9 @@ def nutrientsApp():
 	print('							$scope.o_contactNameInputActive = "";')
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
+	print('							$scope.o_submitBtn = "";')
 	print('						}')
+	#if the user is deleting an organization set delete button to active
 	print('						else if(btnName == "DeleteOrganization"){')
 	print('							$scope.o_browseActive = "";')
 	print('							$scope.o_addActive = "";')
@@ -308,7 +391,9 @@ def nutrientsApp():
 	print('							$scope.o_contactNameInputActive = "";')
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
+	print('							$scope.o_submitBtn = "";')
 	print('						}')
+	#if the user is adding a platform set add button to active
 	print('						else if(btnName == "AddPlatform"){')
 	print('							$scope.p_browseActive = "";')
 	print('							$scope.p_addActive = "active";')
@@ -322,7 +407,9 @@ def nutrientsApp():
 	print('							$scope.p_rssInputActive = "";')
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
+	print('							$scope.p_submitBtn = "";')
 	print('						}')
+	#if the user is editing a platform set edit button to active
 	print('						else if(btnName == "EditPlatform"){')
 	print('							$scope.p_browseActive = "";')
 	print('							$scope.p_addActive = "";')
@@ -336,7 +423,9 @@ def nutrientsApp():
 	print('							$scope.p_rssInputActive = "";')
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
+	print('							$scope.p_submitBtn = "";')
 	print('						}')
+	#if the user is deleting a platform set delete button to active
 	print('						else if(btnName == "DeletePlatform"){')
 	print('							$scope.p_browseActive = "";')
 	print('							$scope.p_addActive = "";')
@@ -350,7 +439,9 @@ def nutrientsApp():
 	print('							$scope.p_rssInputActive = "";')
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
+	print('							$scope.p_submitBtn = "";')
 	print('						}')
+	#if the user is adding a sensor set add button to active
 	print('						else if(btnName == "AddSensor"){')
 	print('							$scope.s_browseActive = "";')
 	print('							$scope.s_addActive = "active";')
@@ -359,7 +450,9 @@ def nutrientsApp():
 	print('							$scope.s_sensorTypeInputActive = "";')
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
+	print('							$scope.s_submitBtn = "";')
 	print('						}')
+	#if the user is editing a sensor set edit button to active
 	print('						else if(btnName == "EditSensor"){')
 	print('							$scope.s_browseActive = "";')
 	print('							$scope.s_addActive = "";')
@@ -368,7 +461,9 @@ def nutrientsApp():
 	print('							$scope.s_sensorTypeInputActive = "";')
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
+	print('							$scope.s_submitBtn = "";')
 	print('						}')
+	#if the user is deleting a sensor set delete button to active
 	print('						else if(btnName == "DeleteSensor"){')
 	print('							$scope.s_browseActive = "";')
 	print('							$scope.s_addActive = "";')
@@ -377,6 +472,7 @@ def nutrientsApp():
 	print('							$scope.s_sensorTypeInputActive = "";')
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
+	print('							$scope.s_submitBtn = "";')
 	print('						}')
 	print('					}')
 	print('					else{')
@@ -388,9 +484,11 @@ def nutrientsApp():
 
 	#set the information in the platform form
 	print('			$scope.populatePlatform = function(selectedOrg){')
+	#empty current selected lists
 	print('				$scope.selectedPlatList = [];')
 	print('				$scope.selectedSensList = [];')
 	print('				var searchId = "";')
+	#loop through the list of organizations to find the id of the currently selected organization
 	print('				for(var i = 0; i < $scope.orgList.length; i++){')
 	print('					if($scope.orgList[i].shortname == selectedOrg.shortname || $scope.orgList[i].name == selectedOrg.name){')
 	print('						searchId = $scope.orgList[i].rowid;')
@@ -405,12 +503,15 @@ def nutrientsApp():
 	print('						break;')
 	print('					}')
 	print('				}')
+	#loop through the total list of platforms to find the current organizations platforms
 	print('				for(var i = 0; i < $scope.platList.length; i++){')
 	print('					if($scope.platList[i].organizationId == searchId){')
 	print('						$scope.selectedPlatList.push($scope.platList[i]);')
 	print('					}')
 	print('				}')
+	#reset selected platform array position
 	print('				platArrayPosition = 0;')
+	#if no platforms were found, then set all fields to null, else assign the fields
 	print('				if($scope.selectedPlatList.length == 0){')
 	print('					$scope.p_nameInput = null;')
 	print('					$scope.p_nameTextInput = null;')
@@ -435,15 +536,19 @@ def nutrientsApp():
 	print('					$scope.p_urnInput = $scope.selectedPlatList[0].urn;')
 	print('					$scope.p_statusInput = $scope.selectedPlatList[0].status;')
 	print('				}')
+	#set form titles
 	print('				$scope.platformTitle = "Platforms in " + $scope.o_shortNameInput.shortname;')
 	print('				$scope.sensorTitle = "Sensors";')
+	#call populate sensor function
 	print('				$scope.populateSensor($scope.selectedPlatList[0]);')
 	print('			};')
 
 	#set the information in the sensor form
 	print('			$scope.populateSensor = function(selectedPlat){')
+	#empty selected sensor list
 	print('				$scope.selectedSensList = [];')
 	print('				var searchId = "";')
+	#loop through the current selected list of platforms to find the id
 	print('				for(var i = 0; i < $scope.selectedPlatList.length; i++){')
 	print('					if($scope.selectedPlatList[i].name == selectedPlat.name){')
 	print('						searchId = $scope.selectedPlatList[i].rowid;')
@@ -459,30 +564,43 @@ def nutrientsApp():
 	print('						break;')
 	print('					}')
 	print('				}')
+	#loop through the total list of sensors to find the current platforms sensors
 	print('				for(var i = 0; i < $scope.sensList.length; i++){')
 	print('					if($scope.sensList[i].platformId == searchId){')
 	print('						$scope.selectedSensList.push($scope.sensList[i]);')
 	print('					}')
 	print('				}')
+	#reset selected sensor array position
 	print('				sensArrayPosition = 0;')
+	#if no sensors were found, then set fields to null, else assign the fields
 	print('				if($scope.selectedSensList.length == 0){')
 	print('					$scope.s_sensorTypeInput = null;')
-	print('					$scope.s_verticalPositionInput = null;')
+	print('					$scope.s_verticalPositionInput = 0;')
 	print('					$scope.s_numberInput = null;')
 	print('				}')
 	print('				else{')
-	print('					$scope.s_sensorTypeInput = $scope.sensTypeList;')
+	print('					for(var i = 0; i < $scope.sensTypeList.length; i++){')
+	print('						if($scope.sensTypeList[i].rowid == $scope.selectedSensList[0].sensorTypeId){')
+	print('							$scope.s_sensorTypeInput = $scope.sensTypeList[i];')
+	print('							break;')
+	print('						}')
+	print('					}')
 	print('					$scope.s_verticalPositionInput = $scope.selectedSensList[0].verticalPosition;')
 	print('					$scope.s_numberInput = $scope.selectedSensList[0].sensorNumber;')
 	print('				}')
+	#set sensor form title
 	print('				$scope.sensorTitle = "Sensors in " + $scope.p_nameInput.name;')
 	print('			};')
 
 	#function to send information to server
 	print('			$scope.submitForm = function(whichForm){')
+	#if the user is authorized
 	print('				if(isValidated){')
+	#if the user is submitting the organization form
 	print('					if(whichForm == "orgForm"){')
+	#if the user is adding an organization
 	print('						if($scope.o_addActive == "active"){')
+	#if all the required fields have been filled then post the information to the insert script, else report an error
 	print('							if($scope.o_shortNameTextInput != "" && $scope.o_nameTextInput != "" && $scope.o_contactNameInput != "" && $scope.o_contactEmailInput != "" && $scope.o_urlInput != ""){')
 	print('								$http.post("insert.py", $.param({"type": "org", "shortName": $scope.o_shortNameTextInput, "name": $scope.o_nameTextInput, "contactName": $scope.o_contactNameInput, "contactEmail": $scope.o_contactEmailInput, "url": $scope.o_urlInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -499,7 +617,9 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show")')
 	print('							}')
 	print('						}')
+	#if the user is editing an organization
 	print('						else if($scope.o_editActive == "active"){')
+	#if all the required fields have been filled then post the information to the edit script, else report an error
 	print('							if($scope.o_shortNameInput != "" && $scope.o_nameInput != "" && $scope.o_shortNameTextInput != "" && $scope.o_nameTextInput != "" && $scope.o_contactNameInput != "" && $scope.o_contactEmailInput != "" && $scope.o_urlInput != ""){')
 	print('								$http.post("update.py", $.param({"type": "org", "shortName": $scope.o_shortNameInput.shortname, "name": $scope.o_nameInput.name, "shortNameNew": $scope.o_shortNameTextInput, "nameNew": $scope.o_nameTextInput, "contactName": $scope.o_contactNameInput, "contactEmail": $scope.o_contactEmailInput, "url": $scope.o_urlInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -515,7 +635,9 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show");')
 	print('							}')
 	print('						}')
+	#if the user is deleting an organization
 	print('						else if($scope.o_deleteActive == "active"){')
+	#if all the required fields have been filled then post the information to the delete script, else report an error
 	print('							if($scope.o_shortNameInput != "" && $scope.o_nameInput != ""){')
 	print('								$http.post("delete.py", $.param({"type": "org", "shortName": $scope.o_shortNameInput.shortname}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -536,10 +658,13 @@ def nutrientsApp():
 	print('							$("#errorModal").modal("show");')
 	print('						}')
 	print('					}')
+	#if the user is submitting the platform form
 	print('					else if(whichForm == "platForm"){')
+	#if the user is adding a platform
 	print('						if($scope.p_addActive == "active"){')
-	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != "" && $scope.p_urnInput != ""){')
-	print('								$http.post("insert.py", $.param({"type": "plat", "name": $scope.p_nameTextInput, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
+	#if all the required fields have been filled then post the information to the insert script, else report an error
+	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != ""){')
+	print('								$http.post("insert.py", $.param({"type": "plat", "orgShortName": $scope.o_shortNameInput.shortname, "name": $scope.p_nameTextInput, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Platform Added";')
 	print('									$("#errorModal").modal("show");')
@@ -553,9 +678,11 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show");')
 	print('							}')
 	print('						}')
+	#if the user is editing a platform
 	print('						else if($scope.p_editActive == "active"){')
-	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != "" && $scope.p_urnInput != ""){')
-	print('								$http.post("update.py", $.param({"type": "plat", "nameNew": $scope.p_nameTextInput, "name": $scope.p_nameInput.name, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
+	#if all the required fields have been filled then post the information to the edit script, else report an error
+	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != ""){')
+	print('								$http.post("update.py", $.param({"type": "plat", "orgShortName": $scope.o_shortNameInput.shortname, "nameNew": $scope.p_nameTextInput, "name": $scope.p_nameInput.name, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Platform Edited";')
 	print('									$("#errorModal").modal("show");')
@@ -569,7 +696,9 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show");')
 	print('							}')
 	print('						}')
+	#if the user is deleting a platform
 	print('						else if($scope.p_deleteActive == "active"){')
+	#if all the required fields have been filled then post the information to the delete script, else report an error
 	print('							if($scope.p_nameInput != ""){')
 	print('								$http.post("delete.py", $.param({"type": "plat", "name": $scope.p_nameInput.name}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -590,8 +719,11 @@ def nutrientsApp():
 	print('							$("#errorModal").modal("show");')
 	print('						}')
 	print('					}')
+	#if the user is submitting the sensor form
 	print('					else if(whichForm == "sensForm"){')
+	#if the user is adding a sensor
 	print('						if($scope.s_addActive == "active"){')
+	#if all the required fields have been filled then post the information to the insert script, else report an error
 	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
 	print('								$http.post("insert.py", $.param({"type": "sens", "sensorType": $scope.s_sensorTypeInput.rowid, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput, "platformId": $scope.p_nameInput.rowid, "provider": $scope.o_shortNameInput.shortname, "stationLabel": $scope.p_nameInput.name, "sensorTypeName": $scope.s_sensorTypeInput.shortTypeName}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -607,7 +739,9 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show");')
 	print('							}')
 	print('						}')
+	#if the user is editing a sensor
 	print('						else if($scope.s_editActive == "active"){')
+	#if all the required fields have been filled then post the information to the edit script, else report an error
 	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
 	print('								$http.post("update.py", $.param({"type": "sens", "rowid": $scope.selectedSensList[sensArrayPosition].rowid, "sensorType": $scope.s_sensorTypeInput.rowid, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -623,7 +757,9 @@ def nutrientsApp():
 	print('								$("#errorModal").modal("show");')
 	print('							}')
 	print('						}')
+	#if the user is deleting a sensor
 	print('						else if($scope.s_deleteActive == "active"){')
+	#if all the required fields have been filled then post the information to the delete script, else report an error
 	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
 	print('								$http.post("delete.py", $.param({"type": "sens", "sensorType": $scope.s_sensorTypeInput.shortTypeName, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
@@ -736,16 +872,23 @@ def nutrientsApp():
 	print('							sensArrayPosition = $scope.selectedSensList.length - 1;')
 	print('						}')
 	print('						console.log("sens: " + sensArrayPosition);')
-	print('						$scope.s_sensorTypeInput = $scope.selectedSensList[sensArrayPosition];')
+	print('						for(var i = 0; i < $scope.sensTypeList.length; i++){')
+	print('							if($scope.sensTypeList[i].rowid == $scope.selectedSensList[sensArrayPosition].sensorTypeId){')
+	print('								$scope.s_sensorTypeInput = $scope.sensTypeList[i];')
+	print('								break;')
+	print('							}')
+	print('						}')
 	print('						$scope.s_verticalPositionInput = $scope.selectedSensList[sensArrayPosition].verticalPosition;')
 	print('						$scope.s_numberInput = $scope.selectedSensList[sensArrayPosition].sensorNumber;')
-	print('						console.log($scope.selectedSensList[sensArrayPosition]);')
 	print('					}')
 	print('				}')
 	print('			};')
 
 	#function to open a link in a new tab
 	print('			$scope.openLink = function(whichLink){')
+	print('				if(whichLink == "ORGURL"){')
+	print('					$window.open($scope.o_urlInput, "_blank");')
+	print('				}')
 	print('				if(whichLink == "URL"){')
 	print('					$window.open($scope.p_urlInput, "_blank");')
 	print('				}')

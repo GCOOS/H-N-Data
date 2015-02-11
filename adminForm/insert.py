@@ -72,7 +72,8 @@ elif formType == 'plat':
 	url = data.getvalue('url')
 	rss = data.getvalue('rss')
 	image = data.getvalue('image')
-	urn = data.getvalue('urn')
+	orgShortName = data.getvalue('orgShortName')
+	urn = 'urn:gcoos:stations:' + orgShortName + ':' + name
 	sql = 'INSERT INTO platform VALUES ("' + str(name) + '", "' + str(description) + '", ' + str(loc_lat) + ', ' + str(loc_lon) + ',' + str(organizationId) + ', 18, "' + str(url) + '", "' + str(rss) + '", "' + str(image) + '", "' + str(urn) + '", NULL)'
 	print(sql)
 	dbh.execute(sql)
@@ -81,12 +82,21 @@ elif formType == 'plat':
 elif formType == 'sens':
 	sensorType = data.getvalue('sensorType')
 	verticalPosition = data.getvalue('verticalPosition')
-	sensorNumber = data.getvalue('sensorNumber')
 	platformId = data.getvalue('platformId')
+
+	sqlSelect = 'SELECT sensorTypeId FROM sensor WHERE platformId = ' + str(platformId)
+	dbh.execute(sqlSelect)
+	rows = dbh.fetchall()
+	sensorCounter = 0
+	for row in rows:
+		if row['sensorTypeId'] == int(sensorType):
+			sensorCounter = sensorCounter + 1
+
+	sensorNumber = sensorCounter + 1
 	provider = data.getvalue('provider')
 	stationLabel = data.getvalue('stationLabel')
 	sensorTypeName = data.getvalue('sensorTypeName')
-	localId = provider + '.' + stationLabel + '.' + sensorTypeName + '.' + sensorNumber
+	localId = str(provider) + '.' + str(stationLabel) + '.' + str(sensorTypeName) + '.' + str(sensorNumber)
 	sqlSelect = 'SELECT rowid,* FROM sensor'
 	dbh.execute(sqlSelect)
 	rows = dbh.fetchall()

@@ -74,7 +74,8 @@ elif formType == 'plat':
 	url = data.getvalue('url')
 	rss = data.getvalue('rss')
 	image = data.getvalue('image')
-	urn = data.getvalue('urn')
+	orgShortName = data.getvalue('orgShortName')
+	urn = 'urn:gcoos:stations:' + orgShortName + ':' + nameNew
 	sql = 'UPDATE platform SET name = "' + str(nameNew) + '", description = "' + str(description) + '", loc_lat = ' + str(loc_lat) + ', loc_lon = ' + str(loc_lon) + ', url = "' + str(url) + '", rss = "' + str(rss) + '", image = "' + str(image) + '", urn = "' + str(urn) + '" WHERE name = "' + str(name) + '"'
 	print(sql)
 	dbh.execute(sql)
