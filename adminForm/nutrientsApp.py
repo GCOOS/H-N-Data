@@ -124,9 +124,9 @@ def nutrientsApp():
 	print('			$scope.sensorTitle = "Sensors";') #sensor form title
 
 	#org variables
-	print('			$scope.o_shortNameInput = "";') #shortname dropdown
+	print('			$scope.o_shortNameInput = null;') #shortname dropdown
 	print('			$scope.o_shortNameTextInput = "";') #shortname text
-	print('			$scope.o_nameInput = "";') #name dropdown
+	print('			$scope.o_nameInput = null;') #name dropdown
 	print('			$scope.o_nameTextInput = "";') #name text
 	print('			$scope.o_contactNameInput = "";') #contact name input
 	print('			$scope.o_contactEmailInput = "";') #contact email input
@@ -137,7 +137,7 @@ def nutrientsApp():
 	print('			$scope.o_deleteActive = "";')
 
 	#plat variables
-	print('			$scope.p_nameInput = "";') #platform name dropdown
+	print('			$scope.p_nameInput = null;') #platform name dropdown
 	print('			$scope.p_nameTextInput = "";') #platform name input
 	print('			$scope.p_descriptionInput = "";') #platform description input
 	print('			$scope.p_latitudeInput = "";') #latitude input
@@ -154,7 +154,7 @@ def nutrientsApp():
 	print('			$scope.p_deleteActive = "";')
 
 	#sens variables
-	print('			$scope.s_sensorTypeInput = "";') #sensor type dropdown
+	print('			$scope.s_sensorTypeInput = null;') #sensor type dropdown
 	print('			$scope.s_verticalPositionInput = "0";') #vertical position input
 	print('			$scope.s_numberInput = "";') #number input
 	print('			$scope.s_browseActive = "active";') #active button flags
@@ -185,6 +185,29 @@ def nutrientsApp():
 	print('			$scope.o_submitBtn = "disabled";')
 	print('			$scope.p_submitBtn = "disabled";')
 	print('			$scope.s_submitBtn = "disabled";')
+
+	#label color variables
+	print('			$scope.o_shortNameTextInputLabelColor = "black";')
+	print('			$scope.o_shortNameInputLabelColor = "black";')
+	print('			$scope.o_nameTextInputLabelColor = "black";')
+	print('			$scope.o_nameInputLabelColor = "black";')
+	print('			$scope.o_contactNameInputLabelColor = "black";')
+	print('			$scope.o_contactEmailInputLabelColor = "black";')
+	print('			$scope.o_urlInputLabelColor = "black";')
+
+	print('			$scope.p_nameTextInputLabelColor = "black";')
+	print('			$scope.p_nameInputLabelColor = "black";')
+	print('			$scope.p_descriptionInputLabelColor = "black";')
+	print('			$scope.p_latitudeInputLabelColor = "black";')
+	print('			$scope.p_longitudeInputLabelColor = "black";')
+	print('			$scope.p_urlInputLabelColor = "black";')
+	print('			$scope.p_rssInputLabelColor = "black";')
+	print('			$scope.p_imageInputLabelColor = "black";')
+	print('			$scope.p_urnInputLabelColor = "black";')
+
+	print('			$scope.s_sensorTypeInputLabelColor = "black";')
+	print('			$scope.s_verticalPositionInputLabelColor = "black";')
+	print('			$scope.s_numberInputLabelColor = "black";')
 
 	#get orgs
 	sqlSelect = 'SELECT rowid, * FROM organization ORDER BY shortname ASC'
@@ -323,6 +346,7 @@ def nutrientsApp():
 	print('					$scope.o_contactEmailInputActive = "disabled";')
 	print('					$scope.o_urlInputActive = "disabled";')
 	print('					$scope.o_submitBtn = "disabled";')
+	print('					$scope.setLabelColor("org", "Browse");')
 	print('				}')
 	#if the user is browsing the platforms set browse button to active
 	print('				else if(btnName == "BrowsePlatform"){')
@@ -339,6 +363,7 @@ def nutrientsApp():
 	print('					$scope.p_imageInputActive = "disabled";')
 	print('					$scope.p_urnInputActive = "disabled";')
 	print('					$scope.p_submitBtn = "disabled";')
+	print('					$scope.setLabelColor("plat", "Browse");')
 	print('				}')
 	#if the user is browsing the sensors set browse button to active
 	print('				else if(btnName == "BrowseSensor"){')
@@ -350,6 +375,7 @@ def nutrientsApp():
 	print('					$scope.s_verticalPositionInputActive = "disabled";')
 	print('					$scope.s_numberInputActive = "disabled";')
 	print('					$scope.s_submitBtn = "disabled";')
+	print('					$scope.setLabelColor("sens", "Browse");')
 	print('				}')
 	print('				else{')
 	#if the user is authorized
@@ -366,6 +392,7 @@ def nutrientsApp():
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
 	print('							$scope.o_submitBtn = "";')
+	print('							$scope.setLabelColor("org", "Add");')
 	print('						}')
 	#if the user is editing an organization set add button to active
 	print('						else if(btnName == "EditOrganization"){')
@@ -379,6 +406,7 @@ def nutrientsApp():
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
 	print('							$scope.o_submitBtn = "";')
+	print('							$scope.setLabelColor("org", "Edit");')
 	print('						}')
 	#if the user is deleting an organization set delete button to active
 	print('						else if(btnName == "DeleteOrganization"){')
@@ -392,6 +420,7 @@ def nutrientsApp():
 	print('							$scope.o_contactEmailInputActive = "";')
 	print('							$scope.o_urlInputActive = "";')
 	print('							$scope.o_submitBtn = "";')
+	print('							$scope.setLabelColor("org", "Delete");')
 	print('						}')
 	#if the user is adding a platform set add button to active
 	print('						else if(btnName == "AddPlatform"){')
@@ -408,6 +437,7 @@ def nutrientsApp():
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
 	print('							$scope.p_submitBtn = "";')
+	print('							$scope.setLabelColor("plat", "Add");')
 	print('						}')
 	#if the user is editing a platform set edit button to active
 	print('						else if(btnName == "EditPlatform"){')
@@ -424,6 +454,7 @@ def nutrientsApp():
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
 	print('							$scope.p_submitBtn = "";')
+	print('							$scope.setLabelColor("plat", "Edit");')
 	print('						}')
 	#if the user is deleting a platform set delete button to active
 	print('						else if(btnName == "DeletePlatform"){')
@@ -440,6 +471,7 @@ def nutrientsApp():
 	print('							$scope.p_imageInputActive = "";')
 	print('							$scope.p_urnInputActive = "";')
 	print('							$scope.p_submitBtn = "";')
+	print('							$scope.setLabelColor("plat", "Delete");')
 	print('						}')
 	#if the user is adding a sensor set add button to active
 	print('						else if(btnName == "AddSensor"){')
@@ -451,6 +483,7 @@ def nutrientsApp():
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
 	print('							$scope.s_submitBtn = "";')
+	print('							$scope.setLabelColor("sens", "Add");')
 	print('						}')
 	#if the user is editing a sensor set edit button to active
 	print('						else if(btnName == "EditSensor"){')
@@ -462,6 +495,7 @@ def nutrientsApp():
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
 	print('							$scope.s_submitBtn = "";')
+	print('							$scope.setLabelColor("sens", "Edit");')
 	print('						}')
 	#if the user is deleting a sensor set delete button to active
 	print('						else if(btnName == "DeleteSensor"){')
@@ -473,6 +507,7 @@ def nutrientsApp():
 	print('							$scope.s_verticalPositionInputActive = "";')
 	print('							$scope.s_numberInputActive = "";')
 	print('							$scope.s_submitBtn = "";')
+	print('							$scope.setLabelColor("sens", "Delete");')
 	print('						}')
 	print('					}')
 	print('					else{')
@@ -601,7 +636,7 @@ def nutrientsApp():
 	#if the user is adding an organization
 	print('						if($scope.o_addActive == "active"){')
 	#if all the required fields have been filled then post the information to the insert script, else report an error
-	print('							if($scope.o_shortNameTextInput != "" && $scope.o_nameTextInput != "" && $scope.o_contactNameInput != "" && $scope.o_contactEmailInput != "" && $scope.o_urlInput != ""){')
+	print('							if($scope.o_shortNameTextInput != "" && $scope.o_nameTextInput != ""){')
 	print('								$http.post("insert.py", $.param({"type": "org", "shortName": $scope.o_shortNameTextInput, "name": $scope.o_nameTextInput, "contactName": $scope.o_contactNameInput, "contactEmail": $scope.o_contactEmailInput, "url": $scope.o_urlInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Organization Added";')
@@ -620,7 +655,7 @@ def nutrientsApp():
 	#if the user is editing an organization
 	print('						else if($scope.o_editActive == "active"){')
 	#if all the required fields have been filled then post the information to the edit script, else report an error
-	print('							if($scope.o_shortNameInput != "" && $scope.o_nameInput != "" && $scope.o_shortNameTextInput != "" && $scope.o_nameTextInput != "" && $scope.o_contactNameInput != "" && $scope.o_contactEmailInput != "" && $scope.o_urlInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null){')
 	print('								$http.post("update.py", $.param({"type": "org", "shortName": $scope.o_shortNameInput.shortname, "name": $scope.o_nameInput.name, "shortNameNew": $scope.o_shortNameTextInput, "nameNew": $scope.o_nameTextInput, "contactName": $scope.o_contactNameInput, "contactEmail": $scope.o_contactEmailInput, "url": $scope.o_urlInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Organization Edited";')
@@ -638,7 +673,7 @@ def nutrientsApp():
 	#if the user is deleting an organization
 	print('						else if($scope.o_deleteActive == "active"){')
 	#if all the required fields have been filled then post the information to the delete script, else report an error
-	print('							if($scope.o_shortNameInput != "" && $scope.o_nameInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null){')
 	print('								$http.post("delete.py", $.param({"type": "org", "shortName": $scope.o_shortNameInput.shortname}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Organization Deleted";')
@@ -663,7 +698,7 @@ def nutrientsApp():
 	#if the user is adding a platform
 	print('						if($scope.p_addActive == "active"){')
 	#if all the required fields have been filled then post the information to the insert script, else report an error
-	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != ""){')
 	print('								$http.post("insert.py", $.param({"type": "plat", "orgShortName": $scope.o_shortNameInput.shortname, "name": $scope.p_nameTextInput, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Platform Added";')
@@ -681,7 +716,7 @@ def nutrientsApp():
 	#if the user is editing a platform
 	print('						else if($scope.p_editActive == "active"){')
 	#if all the required fields have been filled then post the information to the edit script, else report an error
-	print('							if($scope.p_nameTextInput != "" && $scope.p_descriptionInput != "" && $scope.p_latitudeInput != "" && $scope.p_longitudeInput != "" && $scope.p_urlInput != "" && $scope.p_rssInput != "" && $scope.p_imageInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameInput != null){')
 	print('								$http.post("update.py", $.param({"type": "plat", "orgShortName": $scope.o_shortNameInput.shortname, "nameNew": $scope.p_nameTextInput, "name": $scope.p_nameInput.name, "description": $scope.p_descriptionInput, "loc_lat": $scope.p_latitudeInput, "loc_lon": $scope.p_longitudeInput, "organizationId": $scope.o_shortNameInput.rowid, "url": $scope.p_urlInput, "rss": $scope.p_rssInput, "image": $scope.p_imageInput, "urn": $scope.p_urnInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Platform Edited";')
@@ -699,7 +734,7 @@ def nutrientsApp():
 	#if the user is deleting a platform
 	print('						else if($scope.p_deleteActive == "active"){')
 	#if all the required fields have been filled then post the information to the delete script, else report an error
-	print('							if($scope.p_nameInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameInput != null){')
 	print('								$http.post("delete.py", $.param({"type": "plat", "name": $scope.p_nameInput.name}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Platform Deleted";')
@@ -724,7 +759,7 @@ def nutrientsApp():
 	#if the user is adding a sensor
 	print('						if($scope.s_addActive == "active"){')
 	#if all the required fields have been filled then post the information to the insert script, else report an error
-	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameInput != null && $scope.s_sensorTypeInput != null && $scope.s_verticalPositionInput != ""){')
 	print('								$http.post("insert.py", $.param({"type": "sens", "sensorType": $scope.s_sensorTypeInput.rowid, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput, "platformId": $scope.p_nameInput.rowid, "provider": $scope.o_shortNameInput.shortname, "stationLabel": $scope.p_nameInput.name, "sensorTypeName": $scope.s_sensorTypeInput.shortTypeName}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Sensor Added";')
@@ -742,7 +777,7 @@ def nutrientsApp():
 	#if the user is editing a sensor
 	print('						else if($scope.s_editActive == "active"){')
 	#if all the required fields have been filled then post the information to the edit script, else report an error
-	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameInput != null && $scope.s_sensorTypeInput != null){')
 	print('								$http.post("update.py", $.param({"type": "sens", "rowid": $scope.selectedSensList[sensArrayPosition].rowid, "sensorType": $scope.s_sensorTypeInput.rowid, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Sensor Edited";')
@@ -760,7 +795,7 @@ def nutrientsApp():
 	#if the user is deleting a sensor
 	print('						else if($scope.s_deleteActive == "active"){')
 	#if all the required fields have been filled then post the information to the delete script, else report an error
-	print('							if($scope.s_sensorTypeInput != "" && $scope.s_verticalPositionInput != "" && $scope.s_numberInput != ""){')
+	print('							if($scope.o_shortNameInput != null && $scope.o_nameInput != null && $scope.p_nameInput != null && $scope.s_sensorTypeInput != ""){')
 	print('								$http.post("delete.py", $.param({"type": "sens", "sensorType": $scope.s_sensorTypeInput.shortTypeName, "verticalPosition": $scope.s_verticalPositionInput, "sensorNumber": $scope.s_numberInput}), {headers: {\'Content-type\': \'application/x-www-form-urlencoded\'}}).success(function(response){')
 	print('									console.log(response);')
 	print('									$scope.globalAlertMessage = "Sensor Deleted";')
@@ -897,6 +932,91 @@ def nutrientsApp():
 	print('				}')
 	print('				else if(whichLink == "IMAGE"){')
 	print('					$window.open($scope.p_imageInput, "_blank");')
+	print('				}')
+	print('			};')
+
+	#function to set label colors
+	print('			$scope.setLabelColor = function(form, operation){')
+	print('				if(form == "org"){')
+	print('					if(operation == "Browse"){')
+	print('						$scope.o_shortNameTextInputLabelColor = "black";')
+	print('						$scope.o_shortNameInputLabelColor = "black";')
+	print('						$scope.o_nameTextInputLabelColor = "black";')
+	print('						$scope.o_nameInputLabelColor = "black";')
+	print('						$scope.o_contactNameInputLabelColor = "black";')
+	print('						$scope.o_contactEmailInputLabelColor = "black";')
+	print('						$scope.o_urlInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Add"){')
+	print('						$scope.o_shortNameTextInputLabelColor = "red";')
+	print('						$scope.o_shortNameInputLabelColor = "black";')
+	print('						$scope.o_nameTextInputLabelColor = "red";')
+	print('						$scope.o_nameInputLabelColor = "black";')
+	print('						$scope.o_contactNameInputLabelColor = "black";')
+	print('						$scope.o_contactEmailInputLabelColor = "black";')
+	print('						$scope.o_urlInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Edit" || operation == "Delete"){')
+	print('						$scope.o_shortNameTextInputLabelColor = "black";')
+	print('						$scope.o_shortNameInputLabelColor = "red";')
+	print('						$scope.o_nameTextInputLabelColor = "black";')
+	print('						$scope.o_nameInputLabelColor = "red";')
+	print('						$scope.o_contactNameInputLabelColor = "black";')
+	print('						$scope.o_contactEmailInputLabelColor = "black";')
+	print('						$scope.o_urlInputLabelColor = "black";')
+	print('					}')
+	print('				}')
+	print('				else if(form == "plat"){')
+	print('					if(operation == "Browse"){')
+	print('						$scope.p_nameTextInputLabelColor = "black";')
+	print('						$scope.p_nameInputLabelColor = "black";')
+	print('						$scope.p_descriptionInputLabelColor = "black";')
+	print('						$scope.p_latitudeInputLabelColor = "black";')
+	print('						$scope.p_longitudeInputLabelColor = "black";')
+	print('						$scope.p_urlInputLabelColor = "black";')
+	print('						$scope.p_rssInputLabelColor = "black";')
+	print('						$scope.p_imageInputLabelColor = "black";')
+	print('						$scope.p_urnInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Add"){')
+	print('						$scope.p_nameTextInputLabelColor = "red";')
+	print('						$scope.p_nameInputLabelColor = "black";')
+	print('						$scope.p_descriptionInputLabelColor = "red";')
+	print('						$scope.p_latitudeInputLabelColor = "red";')
+	print('						$scope.p_longitudeInputLabelColor = "red";')
+	print('						$scope.p_urlInputLabelColor = "black";')
+	print('						$scope.p_rssInputLabelColor = "black";')
+	print('						$scope.p_imageInputLabelColor = "black";')
+	print('						$scope.p_urnInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Edit" || operation == "Delete"){')
+	print('						$scope.p_nameTextInputLabelColor = "black";')
+	print('						$scope.p_nameInputLabelColor = "red";')
+	print('						$scope.p_descriptionInputLabelColor = "black";')
+	print('						$scope.p_latitudeInputLabelColor = "black";')
+	print('						$scope.p_longitudeInputLabelColor = "black";')
+	print('						$scope.p_urlInputLabelColor = "black";')
+	print('						$scope.p_rssInputLabelColor = "black";')
+	print('						$scope.p_imageInputLabelColor = "black";')
+	print('						$scope.p_urnInputLabelColor = "black";')
+	print('					}')
+	print('				}')
+	print('				else if(form == "sens"){')
+	print('					if(operation == "Browse"){')
+	print('						$scope.s_sensorTypeInputLabelColor = "black";')
+	print('						$scope.s_verticalPositionInputLabelColor = "black";')
+	print('						$scope.s_numberInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Add"){')
+	print('						$scope.s_sensorTypeInputLabelColor = "red";')
+	print('						$scope.s_verticalPositionInputLabelColor = "red";')
+	print('						$scope.s_numberInputLabelColor = "black";')
+	print('					}')
+	print('					else if(operation == "Edit" || operation == "Delete"){')
+	print('						$scope.s_sensorTypeInputLabelColor = "red";')
+	print('						$scope.s_verticalPositionInputLabelColor = "black";')
+	print('						$scope.s_numberInputLabelColor = "black";')
+	print('					}')
 	print('				}')
 	print('			};')
 	print('		});')
