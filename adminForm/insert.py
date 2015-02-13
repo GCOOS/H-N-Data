@@ -1,7 +1,7 @@
 #!/opt/Python-3.4.1/python
 #print("Content-Type:text/html\n\n")
 
-#Date Last Modified: 	02-04-2014
+#Date Last Modified: 	02-13-2014
 #Module: 				delete.py
 #Object: 				insert requested organization, platform, or sensor into database
 #Return:				
@@ -53,33 +53,59 @@ formType = data.getvalue('type')
 
 #check which form the user is submitting
 if formType == 'org':
+	#retrieve all fields from client
 	shortName = data.getvalue('shortName')
 	name = data.getvalue('name')
+
 	contactName = data.getvalue('contactName')
+	if str(contactName) == 'None':
+		contactName = ''
+
 	contactEmail = data.getvalue('contactEmail')
+	if str(contactEmail) == 'None':
+		contactEmail = ''
+
 	url = data.getvalue('url')
+	if str(url) == 'None':
+		url = ''
+
+	#insert organization
 	sql = 'INSERT INTO organization VALUES ("' + str(shortName) + '","' + str(name) + '","' + str(contactName) + '","' + str(contactEmail) + '","' + str(url) + '")'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'plat':
+	#retrieve all fields from client
 	name = data.getvalue('name')
 	description = data.getvalue('description')
 	loc_lat = data.getvalue('loc_lat')
 	loc_lon = data.getvalue('loc_lon')
 	organizationId = data.getvalue('organizationId')
+
 	url = data.getvalue('url')
+	if str(url) == 'None':
+		url = ''
+
 	rss = data.getvalue('rss')
+	if str(rss) == 'None':
+		rss = ''
+
 	image = data.getvalue('image')
+	if str(image) == 'None':
+		image = ''
+
 	orgShortName = data.getvalue('orgShortName')
 	urn = 'urn:gcoos:stations:' + orgShortName + ':' + name
+
+	#insert platform
 	sql = 'INSERT INTO platform VALUES ("' + str(name) + '", "' + str(description) + '", ' + str(loc_lat) + ', ' + str(loc_lon) + ',' + str(organizationId) + ', 18, "' + str(url) + '", "' + str(rss) + '", "' + str(image) + '", "' + str(urn) + '", NULL)'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'sens':
+	#retrieve all fields from client
 	sensorType = data.getvalue('sensorType')
 	verticalPosition = data.getvalue('verticalPosition')
 	platformId = data.getvalue('platformId')
@@ -97,11 +123,15 @@ elif formType == 'sens':
 	stationLabel = data.getvalue('stationLabel')
 	sensorTypeName = data.getvalue('sensorTypeName')
 	localId = str(provider) + '.' + str(stationLabel) + '.' + str(sensorTypeName) + '.' + str(sensorNumber)
+
+	#find current highest sensor number for a given type
 	sqlSelect = 'SELECT rowid,* FROM sensor'
 	dbh.execute(sqlSelect)
 	rows = dbh.fetchall()
 	for row in rows:
 		maxId = row['rowid']
+
+	#insert sensor
 	sql = 'INSERT INTO sensor VALUES (' + str(maxId + 1) + ',' + str(platformId) + ',' + str(sensorType) + ',"' + str(localId) + '",' + str(sensorNumber) + ',' + str(verticalPosition) + ', "2008-01-01T00:00:00Z", "2008-01-01T00:00:00Z", 2)'
 	print(sql)
 	dbh.execute(sql)

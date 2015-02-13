@@ -1,7 +1,7 @@
 #!/opt/Python-3.4.1/python
 #print("Content-Type:text/html\n\n")
 
-#Date Last Modified: 	02-04-2014
+#Date Last Modified: 	02-13-2014
 #Module: 				delete.py
 #Object: 				delete requested organization, platform, or sensor from database
 #Return:				
@@ -53,21 +53,30 @@ formType = data.getvalue('type')
 
 #check which form the user is submitting
 if formType == 'org':
+	#retrieve all fields from client
 	shortName = data.getvalue('shortName')
+
+	#delete organization
 	sql = 'DELETE FROM organization WHERE shortname = "' + str(shortName) + '"'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'plat':
+	#retrieve all fields from client
 	name = data.getvalue('name')
+
+	#delete platform
 	sql = 'DELETE FROM platform WHERE name = "' + str(name) + '"'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'sens':
+	#retrieve all fields from client
 	rowid = data.getvalue('rowid')
+
+	#delete sensor
 	sql = 'DELETE FROM sensor WHERE rowid = ' + str(rowid)
 	print(sql)
 	dbh.execute(sql)

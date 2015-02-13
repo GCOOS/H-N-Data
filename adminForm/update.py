@@ -1,7 +1,7 @@
 #!/opt/Python-3.4.1/python
 #print("Content-Type:text/html\n\n")
 
-#Date Last Modified: 	02-04-2014
+#Date Last Modified: 	02-13-2014
 #Module: 				delete.py
 #Object: 				update requested organization, platform, or sensor in database
 #Return:				
@@ -53,38 +53,69 @@ formType = data.getvalue('type')
 
 #check which form the user is submitting
 if formType == 'org':
+	#retrieve all fields from client
 	shortName = data.getvalue('shortName')
 	name = data.getvalue('name')
 	shortNameNew = data.getvalue('shortNameNew')
 	nameNew = data.getvalue('nameNew')
+
 	contactNameNew = data.getvalue('contactName')
+	if str(contactNameNew) == 'None':
+		contactNameNew = ''
+
 	contactEmailNew = data.getvalue('contactEmail')
+	if str(contactEmailNew) == 'None':
+		contactEmailNew = ''
+
 	urlNew = data.getvalue('url')
+	if str(urlNew) == 'None':
+		urlNew = ''
+
+	#update organization
 	sql = 'UPDATE organization SET shortname = "' + str(shortNameNew) + '", name = "' + str(nameNew) + '", contactName = "' + str(contactNameNew) + '", contactEmail = "' + str(contactEmailNew) + '", url = "' + str(urlNew) + '" WHERE shortName = "' + str(shortName) + '"'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'plat':
+	#retrieve all fields from client
 	name = data.getvalue('name')
 	nameNew = data.getvalue('nameNew')
 	description = data.getvalue('description')
 	loc_lat = data.getvalue('loc_lat')
 	loc_lon = data.getvalue('loc_lon')
+
 	url = data.getvalue('url')
+	if str(url) == 'None':
+		url = ''
+
 	rss = data.getvalue('rss')
+	if str(rss) == 'None':
+		rss = ''
+
 	image = data.getvalue('image')
+	if str(image) == 'None':
+		image = ''
+
 	orgShortName = data.getvalue('orgShortName')
 	urn = 'urn:gcoos:stations:' + orgShortName + ':' + nameNew
+
+	#update platform
 	sql = 'UPDATE platform SET name = "' + str(nameNew) + '", description = "' + str(description) + '", loc_lat = ' + str(loc_lat) + ', loc_lon = ' + str(loc_lon) + ', url = "' + str(url) + '", rss = "' + str(rss) + '", image = "' + str(image) + '", urn = "' + str(urn) + '" WHERE name = "' + str(name) + '"'
 	print(sql)
 	dbh.execute(sql)
 	dbconnect.commit()
 	dbconnect.close()
 elif formType == 'sens':
+	#retrieve all fields from client
 	sensorType = data.getvalue('sensorType')
 	verticalPosition = data.getvalue('verticalPosition')
 	sensorNumber = data.getvalue('sensorNumber')
 	rowid = data.getvalue('rowid')
+
+	#update sensor
 	sql = 'UPDATE sensor SET sensorTypeId = ' + str(sensorType) + ', verticalPosition = ' + str(verticalPosition) + ', sensorNumber = ' + str(sensorNumber) + ' WHERE rowid = ' + str(rowid)
 	print(sql)
+	dbh.execute(sql)
+	dbconnect.commit()
+	dbconnect.close()
