@@ -71,8 +71,7 @@
       <!-- end header --></div>
         
 		<div id="mainContent">
-        	<h1 id="bigtitle" style="color:red; border-bottom:solid; border-top:solid; border-bottom-width: thin">WARNING! This site remains to be in development phase and not for public use. Please return  mid-February 2015 as we are still actively importing data to make this portal operational. Sorry for the inconvenience and thanks for your continuing interest.</h1>
-            
+        	           
         	<h1 id="bigtitle" style="border-bottom:solid; border-bottom-width: thin">Statistics: Assets/Inventory</h1>
             <table width="75%" border="0" cellspacing="0" cellpadding="0" style="margin-left:30px">
               <tr align="center" bgcolor="#CCCCCC">
@@ -323,29 +322,29 @@
                   <p style="margin-left:30px">Select the data to retrieve:</p>
                   <table width="75%" border="0" cellspacing="0" cellpadding="0" style="margin-left:30px">
                     <tr>
-                      <td><input name="do" type="checkbox" value="unchecked" />dissolved oxygen (DO)</td>
-                      <td><input name="no2" type="checkbox" value="unchecked" />nitrite (NO2)</td>
-                      <td><input name="ent" type="checkbox" value="unchecked" />enterococcus</td>
+                      <td><input name="do" type="checkbox" value="unchecked" disabled="disabled"/>dissolved oxygen (DO)</td>
+                      <td><input name="no2" type="checkbox" value="unchecked" disabled="disabled" />nitrite (NO2)</td>
+                      <td><input name="ent" type="checkbox" value="unchecked" disabled="disabled" />enterococcus</td>
                     </tr>
                     <tr>
-                      <td><input name="water_temperature" type="checkbox" value="unchecked" />water temperature (C)</td>
-                      <td><input name="no3" type="checkbox" value="unchecked" />nitrate (NO3)</td>
-                      <td><input name="fecal" type="checkbox" value="unchecked" />fecal colliform</td>
+                      <td><input name="water_temperature" type="checkbox" value="unchecked" disabled="disabled" />water temperature (C)</td>
+                      <td><input name="no3" type="checkbox" value="unchecked" disabled="disabled" />nitrate (NO3)</td>
+                      <td><input name="fecal" type="checkbox" value="unchecked" disabled="disabled" />fecal colliform</td>
                     </tr>
                     <tr>
-                      <td><input name="salinity" type="checkbox" value="unchecked" />salinity</td>
-                      <td><input name="ntotal" type="checkbox" value="unchecked" />total N (NO2+NO3)</td>
+                      <td><input name="salinity" type="checkbox" value="unchecked" disabled="disabled" />salinity</td>
+                      <td><input name="ntotal" type="checkbox" value="unchecked" disabled="disabled" />total N (NO2+NO3)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <td><input name="ph" type="checkbox" value="unchecked" />pH</td>
-                      <td><input name="nh3" type="checkbox" value="unchecked" />amonia (NH3)</td>
-                      <td><input name="po4" type="checkbox" value="unchecked" />orthophosphate phosphate</td>
+                      <td><input name="ph" type="checkbox" value="unchecked" disabled="disabled" />pH</td>
+                      <td><input name="nh3" type="checkbox" value="unchecked" disabled="disabled" />amonia (NH3)</td>
+                      <td><input name="po4" type="checkbox" value="unchecked" disabled="disabled" />orthophosphate phosphate</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td><input name="nh4" type="checkbox" value="unchecked" />organic N (NH4+)</td>
-                      <td><input name="po4t" type="checkbox" value="unchecked" />total phosphate</td>
+                      <td><input name="nh4" type="checkbox" value="unchecked" disabled="disabled" />organic N (NH4+)</td>
+                      <td><input name="po4t" type="checkbox" value="unchecked" disabled="disabled" />total phosphate</td>
                     </tr>
                   </table>
                   <p>
@@ -453,8 +452,12 @@
               <p>To access the water temperature data in the repository for all the Gulf region for the period January 01, 1998 (time: 00:00:00 UTC) to December 31, 1999 (23:59:59 UTC), for enterococcus, fecal coliform, nitrite and ph, and sorted by dates:</p>
               <p><a href="http://data.gcoos.org/nutrients/get_data.php?bbox=-98.4,21.7,-80.5,31.0&amp;start=2008-11-01T00:00:00Z&amp;stop=2008-11-15T23:59:59Z&amp;obs=water_temperature&amp;source=All&amp;fmt=csv&amp;sortBy=dates" target="_blank">http://data.gcoos.org/nutrients/get_data.php?bbox=-98.4,21.7,-80.5,31.0&amp;start=1998-01-01T00:00:00Z&amp;stop=1999-12-31T23:59:59Z&amp;obs=ent,fecal,no2,ph&amp;source=All&amp;fmt=csv&amp;sortBy=dates</a></p>
           </blockquote>
+			<h1 id="bigtitle" style="border-bottom:solid; border-bottom-width: thin">Open Source Codes</h1>
+          	<blockquote>
+            The GCOOS H-N portal was developed and will continue to be developed in open source envirnment. The codes are deposited and synchronized via the GitHub (<a href="https://github.com/GCOOS/H-N-Data" target="_blank">https://github.com/GCOOS/H-N-Data</a>).
+            </blockquote>
       </div>
-      <div id="footer"><?php include ("gcoos_footer.php");?></div>
+      <div id="footer"><?php include ("gcoos_footer_base.php");?></div>
 
 	<!-- end #container --> </div>
 
