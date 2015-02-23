@@ -1,0 +1,1068 @@
+body
+{
+    font-family:Tahoma;
+    font-size:10pt;
+}
+
+/* <Grid> */
+table.grid tr th.pgui-line-number-header
+{
+    width: 30px;
+}
+
+table.grid tr td.pgui-line-number
+{
+    font-family: Consolas, Courier New, monospace;
+    font-size: 0.9em;
+}
+
+em.pgui-null-value
+{
+    color: #aaa;
+    font-style: italic;
+}
+
+table.grid tr th.row-selector
+{
+    width: 30px;
+}
+
+table.grid tr td.emplygrid
+{
+    height: 50px;
+}
+
+.inline_edit_init
+{
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* <Page size selector> */
+
+.pgui-ok-dialog-content
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.pgui-select-page-size
+{
+    border-top: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+}
+
+.pgui-custom-page-size
+{
+    border: 1px solid #aaa;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+table.pgui-select-page-size tr td,
+table.pgui-select-page-size tr th
+{
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    padding: 2px;
+}
+
+table.pgui-select-page-size tr td + td
+{
+    text-align: center;
+}
+
+table.pgui-select-page-size tr th
+{
+    font-weight: bold;
+}
+
+/* </Page size selector> */
+
+.pgui-dialog-cusomize-page-nav-size
+{
+    font-size: 9pt;
+}
+
+.pgui-page-nav-size-list
+{
+    padding-left: 5px;
+    list-style: none;
+}
+
+.pgui-page-nav-size-list li 
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.pgui-page-nav-size-list div.ui-icon
+{
+    float: left;
+}
+
+table.adv_filter tr.adv_filter_top_panel td
+{
+    font-weight: normal;
+    font-size: 8pt;
+    text-align: right !important;
+}
+
+body.error_page
+{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #F8F8F8;   
+}
+
+div.grid_error_message_close_button
+{
+    position: relative;
+    right: -3px;
+    top: -3px;
+    border: solid 1px transparent;
+    float: right;
+    background-image: url(../../images/close_error_panel.gif);
+    width: 16px;
+    height: 16px;
+}
+
+div.grid_error_message_close_button_hover
+{
+    border: solid 1px #f00;
+    cursor: pointer;
+    background: #f99 url(../../images/close_error_panel.gif);
+}
+
+div.grid_error_message
+{
+    width: auto;
+    height: auto;
+    border-style: solid;
+    border-color: #FF0000;
+    border-width: 1px;
+    padding: 5px;
+    background-color: #FFBBBB;
+    text-align: left;
+}
+
+td.grid_error_row
+{
+    padding: 5px !important;
+}
+
+div.error_box
+{
+    width: 60%;
+    height: auto;
+    border-style: solid;
+    border-color: #FF0000;
+    border-width: 1px;
+    padding-top: 20px;
+    background-color: #FFBBBB;
+}
+
+div.detail_preview_head
+{
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+div.detail_preview_head .detail_page_caption
+{
+    font-weight: bold;
+}
+
+table.grid tr th
+{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+div.auth_bar
+{
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+div.auth_bar #loggen_in_as_text
+{
+    color: #FF7D00;
+    font-weight: bold;
+}
+div.auth_bar #user_name
+{
+    color: #3E87C5;
+    font-weight: bold;
+}
+
+
+div.page_list #current_page
+{
+    font-size: 11px;
+    color: #3E87C5;
+    font-weight: bold;
+}
+div.page_list h3
+{
+    font-weight: bold;
+    font-size: 14px;
+    color: #D94B2B;
+    margin-bottom: 5px;
+}
+div.page_list ul
+{
+    list-style-image: url(../../images/menu_arrow.gif);
+    padding-left: 20px;
+    margin-top: 0;
+    margin-left: 0;
+}
+div.page_list li a, div.page_list li a:visited
+{
+    color: #888888;
+    text-decoration: none;
+}
+div.page_list li a:hover
+{
+    color: #FF8888;
+    text-decoration: underline;
+}
+
+.errorMessages
+{
+    text-align: left;
+    padding: 10px;
+    color: #FF6666;
+}
+
+.errorMessagesHead
+{
+    text-align: left;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.active
+{
+    font-weight: bold;
+}
+
+div.site_header_pad
+{   
+    height: 1px;
+}
+
+.error_box h3
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.error_box div.error_details
+{
+    background-color: #FFDDDD;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #888888;
+    font-family: Courier New;
+    font-size: 9pt;
+}
+
+.error_box div.error_sugg
+{
+    text-align: left;
+    padding: 10px;
+}
+
+div.login_error_box
+{
+    text-align: left; 
+    background-color: #FFAAAA; 
+    border-color: #FF8888; 
+    border-style: solid; 
+    border-width: 1px; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    padding-left: 3px;
+}
+
+.highlight { background-color: yellow; }
+
+div.qtip-wrapper 
+{
+    z-index: 999;
+    text-align: justify;
+    position: absolute;
+    font-size: .9em;
+    width: 350px;
+    background: transparent url(../../images/hint_arrow.png) no-repeat scroll center bottom;
+    color: #000;
+    padding-bottom: 5px;
+    display: none
+}
+
+div.qtip-wrapper div 
+{
+    border: 1px solid #000;
+    background: #FFFFE1 none;
+    padding: 5px;
+    font: normal normal .9em/1em "Arial", verdana, sans-serif;
+}
+
+div.qtip-wrapper-asearch
+{
+    z-index: 999;
+    text-align: justify;
+    position: absolute;
+    font-size: .9em;
+    width: auto;
+    background: transparent url(../../images/hint_arrow.png) no-repeat scroll center bottom;
+    color: #000;
+    padding-bottom: 5px;
+    display: none
+}
+
+div.qtip-wrapper-header
+{
+    z-index: 999;
+    text-align: justify;
+    position: absolute;
+    font-size: .9em;
+    width: auto;
+    background: transparent url(../../images/hint_arrow.png) no-repeat scroll center bottom;
+    color: #000;
+    padding-bottom: 5px;
+    display: none
+}
+
+div.qtip-wrapper-asearch div
+{
+    border: 1px solid #000;
+    background: #FFFFE1 none;
+    padding: 5px;
+    font: normal normal .9em/1em "Tahoma", verdana, sans-serif;
+}
+
+div.qtip-wrapper-header div
+{
+    border: 1px solid #000;
+    background: #FFFFE1 none;
+    padding: 5px;
+    font: normal normal .9em/1em "Tahoma", verdana, sans-serif;
+}
+
+table.advanced_search_hint
+{
+    border-collapse: collapse;
+    margin-left: 10px;
+}
+
+table.advanced_search_hint td
+{
+    font-size: 8pt;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+div.box
+{
+    position: absolute; 
+    background: #ccc none; 
+    text-align: center; 
+    color: #333;
+    cursor: pointer;
+}
+
+div.box_hidden
+{
+    display: none;
+}
+
+a.hide_right_panel
+{
+    font-size: 8pt;
+    font-family: Tahoma;
+}
+
+.top_panel
+{
+    padding: 5px;
+}
+
+div.page_list
+{
+    font-family: Verdana;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+.pgui-customize-page-nav-size
+{
+    font-size: 8pt;
+    text-decoration: none;
+    position: relative;
+    top: -10px;
+    left: 5px;
+}
+
+div.page_navigator #current_page
+{
+    padding: 2px;
+    
+}
+
+div.page_navigator a.page_link
+{
+    margin: 0 6px;
+}
+
+table.adv_filter tr.adv_filter_row td.adv_filter_not_cell
+{
+    text-align: center;
+}
+
+table.grid tr th.grid_menu
+{
+    font-weight: normal;
+}
+
+.grid .grid_menu_link,
+.grid .grid_menu_pseudo_link
+{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.under_grid_menu
+{
+    width: auto;
+    padding-bottom: 4px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+a#highligth_all_link
+{
+    padding: 2px;
+}
+
+a#highligth_all_link.pressed 
+{
+    border: 1px solid #aaa;
+    background-color: #E2E2E2;
+    text-decoration: none;
+}
+
+.under_grid_link
+{
+    font-size: 8pt;
+}
+
+
+.site_header
+{
+  color: white;
+}
+
+.login_control_additional_links_row
+{
+    border-top: 1px solid #aaa;
+}
+
+.grid
+{
+    width: 100%;
+}
+
+.dropdown_container {
+    border:1px solid #AAAAAA;
+    margin: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+table.dropdown_button_container {
+    border-collapse:collapse;
+    width: 100%;
+    border-style:none none none none;
+}
+
+table.dropdown_button_container td.dropdown_button_column
+{
+    background: #FFFFFF url(../../images/darr_dd_out.gif) no-repeat scroll center center;
+    cursor:default;
+    padding:0;
+    width:16px;
+    z-index:0;
+    border-style: none;
+}
+
+table.dropdown_button_container td.dropdown_input_container
+{
+    border-style: none;
+    padding:0;
+}
+
+.dropdown_input {
+    border: 0px;
+    width: 100%;
+    font-family:Tahoma;
+}
+
+.dropdown_input_blur
+{
+    color: #aaa;
+    font-family:Tahoma;
+}
+
+.dropdown_input_active
+{
+    color: #000;
+}
+
+
+/* <Image overlay> */
+#img {
+    border:1px solid #666;
+}
+
+.next, .prev {
+    position:absolute;
+    top:40%;
+    border:1px solid #666;
+    cursor:pointer;
+    display:block;
+    padding:10px 20px;
+    color:#fff;
+    font-size:11px;
+
+    /* upcoming CSS3 features */
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+.prev {
+    left:0;
+    border-left:0;
+    -moz-border-radius-topleft:0;
+    -moz-border-radius-bottomleft:0;
+    -webkit-border-bottom-left-radius:0;
+    -webkit-border-top-left-radius:0;
+}
+
+.next {
+    right:0;
+    border-right:0;
+    -moz-border-radius-topright:0;
+    -moz-border-radius-bottomright:0;
+    -webkit-border-bottom-right-radius:0;
+    -webkit-border-top-right-radius:0;
+}
+
+.next:hover, .prev:hover {
+    text-decoration:underline;
+    background-color:#000;
+}
+
+.disabled {
+    visibility:hidden;
+}
+
+.info {
+    position:absolute;
+    bottom:0;
+    left:0;
+    padding:10px 15px;
+    color:#fff;
+    font-size:11px;
+    border-top:1px solid #666;
+}
+
+.info strong {
+    display:block;
+}
+
+.progress {
+    position:absolute;
+    top:45%;
+    left:50%;
+    display:none;
+}
+
+.next, .prev, .info {
+    background:#333 !important;
+    background:rgba(0, 0, 0, 0.6) url(/img/global/gradient/h80.png) repeat-x;
+}
+
+.simple_overlay {
+    display:none;
+    z-index:10000;
+    background-color:#333;
+    width:675px;
+    min-height:200px;
+    border:1px solid #666;
+
+    /* CSS3 styling for latest browsers */
+    -moz-box-shadow:0 0 90px 5px #000;
+    -webkit-box-shadow: 0 0 90px #000;
+}
+
+/* close button positioned on upper right corner */
+.simple_overlay .close {
+    background-image:url(../img/overlay/close.png);
+    position:absolute;
+    right:-15px;
+    top:-15px;
+    cursor:pointer;
+    height:35px;
+    width:35px;
+}
+/* </Image overlay> */
+
+.auxiliary_header_text
+{
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.navbar_section_break
+{
+    background-image: url(../../images/section_break.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 1px;
+    margin-bottom: -10px;
+}
+
+.section_hide_button
+{
+    display: inline-block;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 1px;
+    height: 16px;
+    width: 16px;
+    padding-right: 2px;
+    float: left;
+}
+
+.section_hide_button_expanded
+{
+    background-image: url(../../images/expanded.png);
+}
+
+.section_hide_button_collapsed
+{
+    background-image: url(../../images/collapsed.png);
+}
+
+.collapsible_navbar_section_header
+{
+    cursor: pointer;
+}
+
+tr.grid-totals
+{
+    font-weight: bold;   
+}
+
+/* <Inline editing> */
+
+.wait_message
+{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+label.error
+{
+    padding: 2px 8px 2px 8px;
+    background-color: #fbb;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #666;
+
+    font-weight: bold;
+    color: #000;
+}
+
+table.pgui-autocomplete-container
+{
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+}
+
+table.pgui-autocomplete-container tr td
+{
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+table.pgui-autocomplete-container tr td div.pgui-ml-autocomplete-button
+{
+    background: transparent url(../../images/darr_dd_out.gif) no-repeat scroll center center;
+    width: 16px;
+    height: 1.2em;
+    overflow: hidden;
+}
+
+table.pgui-autocomplete-container tr td input.pgui-autocomplete
+{
+    border: 0;
+}
+
+div.pgui-autocomplete-container-container
+{
+    margin: 4px 0 4px 0;
+    padding: 2px 0 2px 0;
+}
+
+div.pgui-autocomplete-container-container div.pgui-caption
+{
+    margin: 0 0 4px 0;
+}
+
+label.inline-edit-error
+{
+    padding: 2px 8px 2px 8px;
+    font-weight: bold;
+    color: #000;    
+}
+
+ul.inline-editing-error-box
+{
+    list-style: none;
+    background-color: #fbb;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #666;
+    
+    padding: 4px 0px 4px 0px;
+    margin: 0px;
+}
+
+/* </Inline editing> */
+
+/* <Editors> */
+
+/* <Autocomplete combobox> */
+.ac_results {
+    padding: 0px;
+    border: 1px solid #AAAAAA;
+    background-color: white;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.ac_results ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ac_results li {
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: default;
+    display: block;
+    /*
+	if width will be 100% horizontal scrollbar will apear
+	when scroll mode will be used
+	*/
+    /*width: 100%;*/
+    font: menu;
+    font-size: 12px;
+    /*
+	it is very important, if line-height not setted or setted
+	in relative units scroll will be broken in firefox
+	*/
+    line-height: 16px;
+    overflow: hidden;
+}
+
+.ac_loading {
+    background: white url('../../images/indicator.gif') right center no-repeat;
+}
+
+
+.ac_even {
+    background-color: white;
+    border: 1px solid white;
+}
+
+.ac_odd {
+    background-color: white;
+    border: 1px solid white;
+}
+
+.ac_over {
+    background-color: #B0D2E9;
+    border: 1px solid #90aabd;
+    color: black;
+}
+
+div.pgui-autocomplete-readonly
+{
+    padding: 4px 0 4px 0;
+    display: table;
+}
+
+div.pgui-autocomplete-readonly div.pgui-autocomplete-level
+{
+    padding: 4px 0 4px 0;
+    display: table-row;
+}
+
+div.pgui-autocomplete-readonly span.caption
+{
+    font-weight: bold;
+    display: table-cell;
+}
+
+div.pgui-autocomplete-readonly span.value
+{
+    padding: 0 4px 0 4px;
+    display: table-cell;
+}
+
+/* </Autocomplete combobox> */
+
+div.masked-edit-hint
+{
+    font-size: 75%;
+    color: #888;    
+}
+
+input.sm_text.disabled-editor
+{
+    border-color: #aaa;
+    background-color: #eee;
+}
+
+
+input.spin-edit
+{
+    border: 1px solid #aaa;
+    height: 1.5em;   
+}
+
+/* </Editors> */
+
+table.edit-grid tr td.editors-column
+{
+    border-right-width: 0px;
+    text-align: left;
+    padding-left: 15px;   
+}
+
+table.edit-grid tr td.labels-column
+{
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+span.required-mark
+{
+    color: red;
+}
+
+table.edit-grid tr td.set-null-column,
+table.edit-grid tr td.set-default-column
+{
+    border-right-width: 0px;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+div.error-message-container
+{
+    display: none;
+
+    text-align: left;
+    background-color: #fbb;
+    color: #000;
+    padding: 8px;
+    margin: 0 2px 8px 2px;
+
+    border: 1px solid #aaa;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+label.modal-edit-error
+{
+    padding: 2px 8px 2px 8px;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+}
+
+ul.editing-error-box
+{
+    text-align: left;
+    list-style: none;
+    background-color: #fbb;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #aaa;
+
+    padding: 4px 0px 4px 0px;
+    margin: 8px 2px 0 2px;
+}
+
+ul.modal-editing-error-box
+{
+    list-style: none;
+    background-color: #fbb;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #aaa;
+
+    padding: 4px 0px 4px 0px;
+    margin: 8px 2px 0 2px;
+}
+
+.ui-state-hover em.highlight_autocomplete
+{
+    font-weight: bold;
+    font-style: normal;
+    background-color: #345f88;
+    color: #fff;
+}
+
+em.highlight_autocomplete
+{
+    font-weight: bold;
+    font-style: normal;
+    background-color: #dce3e9;
+    color: #000;
+}
+
+
+.adv_filter_row input.sm_text
+{
+    width: 155px;
+}
+
+input.pgui-date-time-edit
+{
+    background-color: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    width: 125px;
+    float: left;
+}
+
+div.pgui-date-time-edit-picker
+{
+    width: 17px;
+    height: 17px;
+    background: transparent url('../../images/date_time.png') no-repeat 0px 0px;
+    cursor: pointer;
+    float: left;
+    margin: 0 0 0 8px;
+}
+
+div.pgui-date-time-edit-picker:active
+{
+    background-position: 1px 1px;
+
+}
+
+table.adv_filter tr.adv_filter_row select
+{
+    width: 155px;
+}
+
+table.adv_filter tr.adv_filter_row td.dropdown_input_container {
+    padding: 0px;
+}
+
+table.adv_filter tr.adv_filter_row td.dropdown_button_column
+{
+    padding: 0px;
+}
+
+table.grid tr.editor_buttons table
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+div.drop-down-list-margin-fix-wrapper
+{
+    float: right;
+    margin: 0.5em 0.4em 0.5em 0;
+}
+
+div.drop-down-list-margin-fix-wrapper button
+{
+    margin: 0 !important;
+}
+
+div.dropdown-button-menu
+{
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+div.dropdown-button-menu ul
+{
+    margin: 0;
+    position: absolute;
+    width: 20em;
+    list-style: none;
+    padding-left: 0;
+}
+
+div.dropdown-button-menu li.pgui-default
+{
+    font-weight: bold;
+}
+
+div.dropdown-button-menu li
+{
+    text-align: left;
+    padding: 0.4em;
+}
+
+div.dropdown-button-menu li:nth-child(n - 1)
+{
+    border-top-width: 0;
+}
+
+div.dropdown-button-menu li:first-child
+{
+    border-top-width: 1px;
+}
+
+table.layout-row
+{
+    border: 0 !important;
+    border-collapse: collapse !important;
+}
+
+table.layout-row > tbody > tr > td
+{
+    border: 0  !important;
+    text-align: inherit !important;
+}
+
+tr.adv_filter_footer input
+{
+    margin: 0 6px;
+}
