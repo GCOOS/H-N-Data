@@ -1,4 +1,4 @@
-#!/opt/Python-3.4.1/python
+#!/usr/local/bin/python3
 #print("Content-Type:text/html\n\n")
 
 #Date Last Modified: 	02-13-2014
@@ -169,7 +169,7 @@ print('				<div class="modal fade" id="errorModal" role="dialog">')
 print('					<div class="modal-dialog modal-sm">')
 print('						<div class="modal-content">')
 print('							<div class="modal-header">')
-print('								<h4 class="modal-title">Alert!</h4>')
+print('								<h4 class="modal-title">NOTE:</h4>')
 print('							</div>')
 print('							<div class="modal-body">')
 print('								<p>{{globalAlertMessage}}</p>')
@@ -346,6 +346,9 @@ print('							<button ng-click="setActiveButton(\'DeletePlatform\')" type="butto
 print('						</div>')
 print('						<div class="col-sm-1">')
 print('							<button ng-click="submitForm(\'platForm\')" type="button" class="btn btn-primary btn-md" ng-disabled="p_submitBtn">Submit</button>')
+print('						</div>')
+print('						<div class="col-sm-1">')
+print('							<button ng-click="addToPlot()" type="button" class="btn btn-primary btn-md" ng-disabled="p_addMarkerBtn">Regenerate Map Markers</button>')
 print('						</div>')
 print('					</div>')
 print('				</div>')
