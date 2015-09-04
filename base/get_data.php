@@ -218,7 +218,6 @@
 		$output = "";
 		
 		//dissolved oxygen
-		//echo $obs.$cr;
 		switch ($obs) {
 		case "dissolved_oxygen":
 			$sql = "";
@@ -265,8 +264,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql.$cr;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum,dissolvedOxygen,qcFlag";
 			$output .= $cr;
@@ -331,8 +328,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),nitrogen,characteristics,remarks,uom,qcFlag";
 			$output .= $cr;
@@ -397,8 +392,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),water_temperature (C),qcFlag";
 			$output .= $cr;
@@ -462,8 +455,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),phosphorus,uom,remarks,qcFlag";
 			$output .= $cr;
@@ -527,8 +518,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),salinity (PSU),qcFlag";
 			$output .= $cr;
@@ -590,8 +579,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),ph,qcFlag";
 			$output .= $cr;
@@ -653,8 +640,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),enterococcus(cfu/100ml),qcFlag";
 			$output .= $cr;
@@ -716,8 +701,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),chlorophyll(mg/m^3),qcFlag";
 			$output .= $cr;
@@ -779,8 +762,6 @@
 				$sql .= "owner, ";
 				$sql .= "observationDate ";
 			}	
-			//echo $sql;
-			
 			// put the header
 			$output = "owner,platform,lat,lon,observationDate,verticalDatum (m),fecal coliform (cfu/100ml),qcFlag";
 			$output .= $cr;
@@ -802,7 +783,6 @@
 	$dbh = null;
 	
 	// generate the file or simply print the file on screen
-	//echo "****************ready to print";
 	header("Content-type: text/plain");
 	header("Content-disposition: attachment; filename=gcoos_" . date("Y-m-d") .  ".csv");
 	
@@ -813,9 +793,7 @@
 	$output .= "and delivery services are provided 'as is' without warranty of any kind. ";
 	$output .= "Data Source: Gulf of Mexico Coastal Ocean Observing System Hypoxia-Nutrients Data Portal (http://data.gcoos.org/nutrients)";
 	$output .=	 $cr;	
-	//$output .= $sql;
-	//$output .=	 $cr;	
-		
+
 	print $output;
 	
 ?>
