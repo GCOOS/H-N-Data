@@ -784,7 +784,8 @@
 	
 	// generate the file or simply print the file on screen
 	header("Content-type: text/plain");
-	header("Content-disposition: attachment; filename=gcoos_" . date("Y-m-d") .  ".csv");
+	//header("Content-disposition: attachment; filename=gcoos_" . date("Y-m-d") .  ".csv");
+	header("Content-disposition: attachment; filename=gcoos_for_".$obs."_".$date1."_to_".$date2."_from_".$source."_data_source_qc_".$_GET["qcFlag"].".csv");
 	
 	$output .=	 $cr;
 	$output .= "DISCLAIMER: The Gulf of Mexico Coastal and Ocean Observing (GCOOS) Hypoxia-Nutrients Data Portal aggregates data ";
