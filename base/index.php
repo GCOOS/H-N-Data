@@ -138,22 +138,7 @@
 								echo '<td>&nbsp;</td>';
 								echo '<td>Moored platforms or study areas where data were collected.</td>';
 							echo '</tr>';
-							// put sensors
-                  			//echo '<tr>';
-							//	echo '<td>Sensors</td>';
-	                    	//	echo '<td align="right">';
-							//		echo '<div align="right">';
-							//			$sql="SELECT count(*) as countS FROM sensor";
-							//			foreach ($dbh->query($sql) as $row){
-							//				$count = $row['countS'];
-							//			}
-							//			echo number_format($count);
-							//		echo '</div>';
-							//	echo '</td>';
-							//	echo '<td>&nbsp;</td>';
-							//	echo '<td>Sensors mounted or data collection details.</td>';
-							//echo '</tr>';
-							
+
 							// put spacer for observations
 							echo '<tr>';
 								echo '<td>&nbsp;</td>';
@@ -589,6 +574,19 @@
                     </label>
                     </div>
                   </p>
+                  <hr />
+                  <p><span class="style13"><strong>Data Quality</strong></span><br />NOTE: Only range-check was made to the entries.</p>
+                  <div  style="margin-left:30px">
+		     <table width="75%" border="0" cellspacing="0" cellpadding="0" style="margin-left:30px">
+                       <tr>
+                           <td width="24%"><input name="qcFlag" type="radio" value="passed" />Passed QC test records</td>
+                	   <td width="22%"><input name="qcFlag" type="radio" value="all" checked/>All records</td>
+			   <td width="54%"><input name="qcFlag" type="radio" value="failed" />Failed QC test records</td>
+                       </tr>
+                    </table>
+
+                  </div>
+                  
                   <p><span class="style13"></span><span class="style13"><strong>Output Format</strong></span><br />
                     <span class="style2">NOTE: Only CSV format is supported to date.</span></p>
                     <p style="margin-left:30px">Select the output format:
